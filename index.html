@@ -1,52 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moisés González</title>
   <style>
-    html, body {
+    * {
       margin: 0;
       padding: 0;
-      overflow-x: scroll;
-      overflow-y: hidden;
+      box-sizing: border-box;
+    }
+
+    html, body {
       width: 100%;
       height: 100vh;
-      white-space: nowrap;
+      overflow: hidden;
+      background: #000;
     }
-    .section {
-      display: inline-block;
+
+    .slide {
       position: relative;
       width: 100vw;
       height: 100vh;
+      background-image: url('tu-foto.jpg');
       background-size: cover;
       background-position: center;
-      transition: transform 5s ease;
+      transition: transform 8s ease;
     }
-    .section:hover {
-      transform: scale(1.02);
+
+    .slide:hover {
+      transform: scale(1.04);
     }
+
+    /* Gradiente oscuro abajo para que el texto se lea bien */
+    .slide::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 60%;
+      background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 100%);
+    }
+
     .content {
       position: absolute;
-      top: 50%;
-      left: 10%;
-      transform: translateY(-50%);
+      bottom: 60px;
+      left: 60px;
+      z-index: 10;
       color: white;
     }
+
     .title {
-      font-size: 4em;
-      margin: 0;
+      font-family: 'Impact', 'Arial Narrow', sans-serif;
+      font-size: clamp(3rem, 8vw, 8rem);
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      line-height: 1;
     }
-    .subtitle {
-      font-size: 2em;
-      margin: 0;
+
+    .slogan {
+      font-family: 'Impact', 'Arial Narrow', sans-serif;
+      font-size: clamp(1rem, 2vw, 1.5rem);
+      font-weight: 300;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      margin-top: 12px;
+      opacity: 0.75;
     }
   </style>
 </head>
 <body>
-  <div class="section" style="background-image: url('your-image.jpg');">
+  <div class="slide">
     <div class="content">
-      <h1 class="title">Your Title</h1>
-      <h2 class="subtitle">Your Name - Your Slogan</h2>
+      <h1 class="title">Moisés González</h1>
+      <p class="slogan">Filmmaker · Director</p>
     </div>
   </div>
 </body>
