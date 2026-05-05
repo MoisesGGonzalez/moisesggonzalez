@@ -1,0 +1,255 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: #000;
+  color: #fff;
+}
+
+/* ── LAYOUT ── */
+.contacto-layout {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+/* ── LADO IZQUIERDO ── */
+.contacto-bg {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+}
+
+.bg-img {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(100%) brightness(0.65);
+  transition: filter 0.6s ease;
+}
+
+.contacto-bg:hover .bg-img {
+  filter: grayscale(100%) brightness(0.75);
+}
+
+.bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0,0,0,0) 40%,
+    rgba(0,0,0,0.6) 100%
+  );
+  z-index: 1;
+}
+
+/* ── CLAIM ── */
+.contacto-claim {
+  position: absolute;
+  bottom: 60px;
+  left: 60px;
+  z-index: 2;
+}
+
+.claim-label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 16px;
+}
+
+.claim-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3rem, 6vw, 6rem);
+  letter-spacing: 4px;
+  line-height: 0.95;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.claim-sub {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.65);
+}
+
+/* ── BOTÓN VOLVER ── */
+.contacto-back {
+  position: absolute;
+  top: 36px;
+  left: 60px;
+  z-index: 2;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contacto-back:hover { color: #fff; }
+
+/* ── BANDA DERECHA ── */
+.contacto-panel {
+  width: clamp(320px, 30vw, 440px);
+  height: 100vh;
+  background: #000;
+  border-left: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.contacto-panel::-webkit-scrollbar { display: none; }
+
+.panel-inner {
+  padding: 60px 52px;
+  width: 100%;
+}
+
+.panel-eyebrow {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.30);
+  margin-bottom: 16px;
+}
+
+.panel-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.5rem, 4vw, 3.8rem);
+  letter-spacing: 4px;
+  line-height: 0.95;
+  color: #fff;
+  margin-bottom: 40px;
+}
+
+.panel-divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255,255,255,0.08);
+  margin: 32px 0;
+}
+
+/* ── ITEMS ── */
+.contacto-item {
+  margin-bottom: 28px;
+}
+
+.item-label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.60rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.30);
+  margin-bottom: 6px;
+}
+
+.item-value {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.80);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: block;
+}
+
+.item-value:hover { color: #fff; }
+.item-value--plain { pointer-events: none; }
+
+/* ── REDES ── */
+.redes-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.red-link {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.80);
+  text-decoration: none;
+  transition: color 0.3s ease, letter-spacing 0.3s ease;
+}
+
+.red-link:hover {
+  color: #fff;
+  letter-spacing: 3px;
+}
+
+/* ── DISPONIBILIDAD ── */
+.contacto-disponibilidad {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.disponibilidad-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 8px rgba(74,222,128,0.6);
+  animation: pulso 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes pulso {
+  0%, 100% { opacity: 1; box-shadow: 0 0 8px rgba(74,222,128,0.6); }
+  50%       { opacity: 0.6; box-shadow: 0 0 14px rgba(74,222,128,0.9); }
+}
+
+.disponibilidad-texto {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+}
+
+/* ── GRANO ── */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0.12;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  animation: grain-move 0.12s steps(1) infinite;
+}
+
+@keyframes grain-move {
+  0%  { background-position:   0px   0px; }
+  10% { background-position: -50px -30px; }
+  20% { background-position:  30px  50px; }
+  30% { background-position: -20px  20px; }
+  40% { background-position:  40px -40px; }
+  50% { background-position: -60px  10px; }
+  60% { background-position:  20px -50px; }
+  70% { background-position: -30px  40px; }
+  80% { background-position:  50px  20px; }
+  90% { background-position: -10px -60px; }
+ 100% { background-position:  60px  30px; }
+}

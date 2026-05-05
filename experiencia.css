@@ -1,0 +1,275 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: #000;
+  color: #fff;
+}
+
+/* ── BANDA IZQUIERDA — fija ── */
+.exp-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: clamp(300px, 28vw, 420px);
+  height: 100vh;
+  background: #000;
+  border-right: 1px solid rgba(255,255,255,0.08);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.exp-panel::-webkit-scrollbar { display: none; }
+
+.exp-panel-inner {
+  padding: 52px 48px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ── VOLVER ── */
+.exp-back {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  margin-bottom: 48px;
+  display: block;
+}
+
+.exp-back:hover { color: #fff; }
+
+/* ── META ── */
+.exp-eyebrow {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.28);
+  margin-bottom: 14px;
+}
+
+.exp-titulo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.8rem, 5vw, 4.2rem);
+  letter-spacing: 3px;
+  line-height: 0.95;
+  color: #fff;
+}
+
+/* ── DIVIDER ── */
+.exp-divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255,255,255,0.08);
+  margin: 28px 0;
+}
+
+/* ── INFO ── */
+.exp-info { margin-bottom: 18px; }
+
+.exp-info-label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.28);
+  margin-bottom: 4px;
+}
+
+.exp-info-valor {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.80);
+}
+
+/* ── DESCRIPCIÓN ── */
+.exp-desc {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 300;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.50);
+  max-width: 100%;
+}
+
+/* ── LINKS ── */
+.exp-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.exp-link {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  text-decoration: none;
+  transition: color 0.3s ease, letter-spacing 0.3s ease;
+}
+
+.exp-link:hover {
+  color: #fff;
+  letter-spacing: 4px;
+}
+
+/* ── SLIDER — detrás de la banda ── */
+.exp-slider {
+  position: fixed;
+  top: 0;
+  left: clamp(300px, 28vw, 420px);
+  right: 0;
+  height: 100vh;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  scrollbar-width: none;
+}
+
+.exp-slider::-webkit-scrollbar { display: none; }
+
+/* ── MOSAICO ── */
+.exp-mosaico {
+  display: grid;
+  height: 100vh;
+  gap: 3px;
+  grid-template-rows: 50vh 50vh;
+  grid-auto-flow: column;
+  grid-auto-columns: 35vw;
+}
+
+.exp-card--normal { grid-column: span 1; grid-row: span 1; }
+.exp-card--tall   { grid-column: span 1; grid-row: span 2; }
+.exp-card--wide   { grid-column: span 2; grid-row: span 1; }
+
+.exp-card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.exp-img {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-color: #111;
+  filter: grayscale(100%) brightness(0.75);
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              filter 0.6s ease;
+}
+
+.exp-card:hover .exp-img {
+  transform: scale(1.04);
+  filter: grayscale(0%) brightness(0.9);
+}
+
+/* ── SCROLL HINT ── */
+.scroll-hint {
+  position: fixed;
+  bottom: 30px;
+  right: 40px;
+  z-index: 300;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.scroll-hint::after { content: '→'; font-size: 1rem; }
+
+/* ── GRANO ── */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  pointer-events: none;
+  opacity: 0.12;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  animation: grain-move 0.12s steps(1) infinite;
+}
+
+@keyframes grain-move {
+  0%   { background-position: 0px 0px; }
+  10%  { background-position: -50px -30px; }
+  20%  { background-position: 30px 50px; }
+  30%  { background-position: -20px 20px; }
+  40%  { background-position: 40px -40px; }
+  50%  { background-position: -60px 10px; }
+  60%  { background-position: 20px -50px; }
+  70%  { background-position: -30px 40px; }
+  80%  { background-position: 50px 20px; }
+  90%  { background-position: -10px -60px; }
+  100% { background-position: 60px 30px; }
+}
+
+/* ════════════════════════════════════════
+   RESPONSIVE MÓVIL
+════════════════════════════════════════ */
+@media (max-width: 768px) {
+  html, body {
+    height: auto;
+    overflow: auto;
+  }
+
+  /* Banda izquierda pasa a ser banda superior */
+  .exp-panel {
+    position: relative;
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    align-items: flex-start;
+  }
+
+  .exp-panel-inner {
+    padding: 80px 28px 40px;
+  }
+
+  /* Slider ocupa todo el ancho debajo de la banda */
+  .exp-slider {
+    position: relative;
+    left: 0;
+    width: 100%;
+    height: 70vw;
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+
+  /* Mosaico — filas más altas en móvil */
+  .exp-mosaico {
+    height: 70vw;
+    grid-template-rows: 35vw 35vw;
+    grid-auto-columns: 80vw;
+  }
+
+  .scroll-hint { display: none; }
+}
+
+@media (max-width: 390px) {
+  .exp-panel-inner { padding: 72px 20px 32px; }
+}

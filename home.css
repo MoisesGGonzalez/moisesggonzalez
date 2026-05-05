@@ -1,0 +1,283 @@
+/* ── SLIDER ── */
+.slider {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  height: 100vh;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  scroll-behavior: auto;
+  scrollbar-width: none;
+}
+
+.slider::-webkit-scrollbar { display: none; }
+
+/* ── PANEL ── */
+.panel {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+/* Panels experiencia — mitad pantalla */
+.panel:nth-child(3),
+.panel:nth-child(4) {
+  width: 50vw;
+}
+
+/* ── KEN BURNS ── */
+@keyframes kenburns {
+  0%   { transform: scale(1); }
+  100% { transform: scale(1.08); }
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  filter: grayscale(100%) contrast(1.15) brightness(0.85);
+  transition: filter 0.6s ease;
+  animation: kenburns 30s ease-in-out infinite alternate;
+}
+
+.panel:nth-child(3):hover .bg,
+.panel:nth-child(4):hover .bg {
+  filter: grayscale(0%) contrast(1.05) brightness(0.85);
+}
+
+.bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.40) 50%, rgba(0,0,0,0.10) 100%),
+    linear-gradient(to right, rgba(0,0,0,0.60) 0%, transparent 60%);
+}
+
+/* ── BORDE LATERAL ── */
+.border-frame {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  box-shadow: inset 4px 0 30px rgba(0,0,0,0.6),
+              inset -4px 0 30px rgba(0,0,0,0.6);
+}
+
+/* ── PANEL BIO ── */
+.panel-bio {
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 55vw;
+}
+
+.bio-inner {
+  max-width: 480px;
+  padding: 0 60px;
+  color: white;
+  opacity: 0;
+  transform: translateY(-40px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.bio-inner.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.bio-label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 28px;
+}
+
+.bio-text {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+  font-weight: 300;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.88);
+}
+
+.bio-text strong { font-weight: 700; color: #fff; }
+
+/* ── HOME CONTENIDO ── */
+.content-home {
+  position: absolute;
+  bottom: 60px;
+  left: 60px;
+  color: white;
+  z-index: 10;
+}
+
+.title-main {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3.5rem, 9vw, 9rem);
+  font-weight: 400;
+  letter-spacing: 6px;
+  line-height: 1;
+}
+
+.title-name {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(0.85rem, 1.6vw, 1.2rem);
+  font-weight: 200;
+  letter-spacing: 10px;
+  text-transform: uppercase;
+  margin-top: 10px;
+  opacity: 0.75;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.title-name::before {
+  content: '';
+  display: inline-block;
+  width: 30px;
+  height: 1px;
+  background: rgba(255,255,255,0.5);
+}
+
+/* ── PROYECTO ── */
+.content-proyecto {
+  position: absolute;
+  bottom: 60px;
+  left: 60px;
+  color: white;
+  z-index: 10;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.content-proyecto.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.proyecto-label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.40);
+  margin-bottom: 10px;
+}
+
+.proyecto-titulo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 6rem);
+  letter-spacing: 4px;
+  line-height: 1;
+  text-decoration: none;
+  color: #fff;
+  display: block;
+  transition: opacity 0.3s ease;
+}
+
+.proyecto-titulo:hover { opacity: 0.7; }
+
+.proyecto-desc {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(0.8rem, 1.2vw, 1rem);
+  font-weight: 300;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-top: 10px;
+  opacity: 0.60;
+}
+
+/* ── LOGO EMPRESA ── */
+.proyecto-logo {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  z-index: 10;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  opacity: 1;
+}
+
+/* ── FIRMA BIO ── */
+.bio-firma {
+  display: block;
+  margin-top: 28px;
+  text-align: right;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: 3px;
+  color: rgba(255,255,255,0.30);
+}
+
+/* ════════════════════════════════════════
+   RESPONSIVE MÓVIL
+════════════════════════════════════════ */
+@media (max-width: 768px) {
+  /* Cada panel ocupa pantalla completa */
+  .panel,
+  .panel:nth-child(3),
+  .panel:nth-child(4) {
+    width: 100vw;
+  }
+
+  /* Panel bio — ancho completo */
+  .panel-bio { width: 100vw; }
+
+  .bio-inner {
+    padding: 0 28px;
+    max-width: 100%;
+  }
+
+  /* Textos home — más abajo y con más margen */
+  .content-home,
+  .content-proyecto {
+    bottom: 80px;
+    left: 28px;
+    right: 28px;
+  }
+
+  .title-main {
+    font-size: clamp(3rem, 14vw, 5rem);
+    letter-spacing: 3px;
+  }
+
+  .title-name {
+    letter-spacing: 5px;
+  }
+
+  .proyecto-titulo {
+    font-size: clamp(2rem, 10vw, 3.5rem);
+  }
+
+  /* Logo empresa — esquina superior izquierda en móvil */
+  .proyecto-logo {
+    top: 24px;
+    right: 24px;
+    width: 56px;
+    height: 56px;
+  }
+}
+
+@media (max-width: 390px) {
+  .content-home,
+  .content-proyecto {
+    bottom: 60px;
+    left: 20px;
+    right: 20px;
+  }
+}

@@ -1,0 +1,255 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: #000;
+  color: #fff;
+}
+
+/* ── GRANO ── */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0.18;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  animation: grain-move 0.12s steps(1) infinite;
+}
+
+@keyframes grain-move {
+  0%   { background-position: 0px 0px; }
+  10%  { background-position: -50px -30px; }
+  20%  { background-position: 30px 50px; }
+  30%  { background-position: -20px 20px; }
+  40%  { background-position: 40px -40px; }
+  50%  { background-position: -60px 10px; }
+  60%  { background-position: 20px -50px; }
+  70%  { background-position: -30px 40px; }
+  80%  { background-position: 50px 20px; }
+  90%  { background-position: -10px -60px; }
+  100% { background-position: 60px 30px; }
+}
+
+/* ── MENÚ LATERAL ── */
+.ui-fixed {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  pointer-events: none;
+}
+
+.side-nav {
+  position: absolute;
+  bottom: 300px;
+  left: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  pointer-events: all;
+}
+
+.side-nav .menu-item,
+.side-nav > a {
+  position: relative;
+  display: block;
+}
+
+.nav-label {
+  display: block;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.65);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  transform-origin: left center;
+  will-change: transform, opacity, width, letter-spacing;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.nav-label:hover { color: #fff; }
+
+/* Submenús laterales */
+.side-submenu {
+  display: none;
+  position: absolute;
+  left: 140px;
+  top: 0;
+  background: rgba(0,0,0,0.82);
+  backdrop-filter: blur(8px);
+  padding: 10px 0;
+  min-width: 160px;
+  border-left: 1px solid rgba(255,255,255,0.15);
+  pointer-events: all;
+}
+
+.menu-item:hover .side-submenu { display: block; }
+
+.side-submenu a {
+  display: block;
+  padding: 8px 20px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.side-submenu a:hover { color: #fff; }
+
+/* ── HAMBURGUESA ── */
+.hamburger {
+  position: fixed;
+  top: 36px;
+  left: 48px;
+  z-index: 500;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hamburger.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: rgba(255,255,255,0.75);
+  transition: transform 0.4s ease, opacity 0.4s ease, background 0.3s ease;
+}
+
+.hamburger:hover span { background: #fff; }
+
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── OVERLAY MENÚ ── */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 400;
+  background: rgba(0,0,0,0.92);
+  backdrop-filter: blur(6px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 80px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.menu-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.menu-overlay .overlay-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.menu-overlay .overlay-nav > .menu-item > a,
+.menu-overlay .overlay-nav > a {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2rem, 5vw, 4.5rem);
+  font-weight: 400;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.50);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  line-height: 1;
+}
+
+.menu-overlay .overlay-nav > .menu-item > a:hover,
+.menu-overlay .overlay-nav > a:hover { color: #fff; }
+
+.menu-overlay .menu-item { position: relative; }
+
+.menu-overlay .overlay-submenu {
+  display: none;
+  padding: 8px 0 0 20px;
+  border-left: 1px solid rgba(255,255,255,0.15);
+  margin-top: 6px;
+}
+
+.menu-overlay .menu-item:hover .overlay-submenu { display: block; }
+
+.menu-overlay .overlay-submenu a {
+  display: block;
+  padding: 5px 14px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.menu-overlay .overlay-submenu a:hover { color: #fff; }
+
+/* ── INDICADOR SCROLL ── */
+.scroll-hint {
+  position: fixed;
+  bottom: 30px;
+  right: 40px;
+  z-index: 300;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.30);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.scroll-hint::after { content: '→'; font-size: 1rem; }
+
+/* ════════════════════════════════════════
+   RESPONSIVE MÓVIL
+════════════════════════════════════════ */
+@media (max-width: 768px) {
+  /* Menú lateral — oculto en móvil */
+  .side-nav { display: none; }
+
+  /* Hamburguesa — siempre visible en móvil */
+  .hamburger {
+    opacity: 1 !important;
+    pointer-events: all !important;
+  }
+
+  /* Overlay menú — padding ajustado */
+  .menu-overlay {
+    padding-left: 36px;
+  }
+
+  /* Scroll hint — oculto en móvil */
+  .scroll-hint { display: none; }
+}

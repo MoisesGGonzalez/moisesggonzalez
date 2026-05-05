@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <style id="page-block">body { visibility: hidden; }</style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proyectos · A La Múa Productions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@200;300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="proyectos.css">
+</head>
+<body>
+
+  <div class="grain"></div>
+
+  <header>
+    <div class="header-inner">
+      <h1 class="header-title">Proyectos</h1>
+      <a href="index.html" class="header-back">← Volver</a>
+    </div>
+  </header>
+
+  <div class="slider" id="slider">
+    <div class="mosaico">
+
+      <!-- Col 1, fila 1 — normal -->
+      <div class="card" style="grid-column:1; grid-row:1;">
+        <div class="card-img" style="background-image: url('proyecto1.png');"></div>
+        <div class="card-overlay"></div>
+        <div class="card-info card-info--top">
+          <p class="card-categoria">Dinam Soluciones SL</p>
+          <a href="#" class="card-titulo">INESBE</a>
+          <p class="card-año">2026</p>
+        </div>
+      </div>
+
+      <!-- Col 2-3, fila 1 — DOBLE ANCHO, se corta en pantalla -->
+      <div class="card" style="grid-column:2 / span 2; grid-row:1;">
+        <div class="card-img" style="background-image: url('proyecto2.png');"></div>
+        <div class="card-overlay"></div>
+        <div class="card-info card-info--top">
+          <p class="card-categoria">Videoclip</p>
+          <a href="#" class="card-titulo">Goya - DM</a>
+          <p class="card-año">2025</p>
+        </div>
+      </div>
+
+      <!-- Col 1, fila 2 — normal -->
+      <div class="card" style="grid-column:1; grid-row:2;">
+        <div class="card-img" style="background-image: url('proyecto3.png');"></div>
+        <div class="card-overlay"></div>
+        <div class="card-info card-info--bottom">
+          <p class="card-categoria">Videoclip</p>
+          <a href="#" class="card-titulo">múa - BBYLINDA</a>
+          <p class="card-año">2026</p>
+        </div>
+      </div>
+
+      <!-- Col 2, fila 2 — normal -->
+      <div class="card" style="grid-column:2; grid-row:2;">
+        <div class="card-img" style="background-image: url('proyecto4.png');"></div>
+        <div class="card-overlay"></div>
+        <div class="card-info card-info--bottom">
+          <p class="card-categoria">Otros</p>
+          <a href="#" class="card-titulo">BAMBONES</a>
+          <p class="card-año">2026</p>
+        </div>
+      </div>
+
+      <!-- Col 3, fila 2 — aparece al deslizar -->
+      <div class="card" style="grid-column:3; grid-row:2;">
+        <div class="card-img" style="background-image: url('proyecto5.png');"></div>
+        <div class="card-overlay"></div>
+        <div class="card-info card-info--bottom">
+          <p class="card-categoria">Próximamente</p>
+          <a href="#" class="card-titulo">Título Proyecto 5</a>
+          <p class="card-año">2025</p>
+        </div>
+      </div>
+
+      <!-- Col 4-5, fila 1 — doble, siguiente bloque -->
+      <div class="card" style="grid-column:4 / span 2; grid-row:1;">
+        <div class="card-img" style="background-image: url('proyecto6.png');"></div>
+        <div class="card-overlay"></div>
+        <div class="card-info card-info--top">
+          <p class="card-categoria">Próximamente</p>
+          <a href="#" class="card-titulo">Título Proyecto 6</a>
+          <p class="card-año">2025</p>
+        </div>
+      </div>
+
+      <!-- Col 4, fila 2 -->
+      <div class="card" style="grid-column:4; grid-row:2;">
+        <div class="card-img" style="background-image: url('proyecto7.png');"></div>
+        <div class="card-overlay"></div>
+        <div class="card-info card-info--bottom">
+          <p class="card-categoria">Próximamente</p>
+          <a href="#" class="card-titulo">Título Proyecto 7</a>
+          <p class="card-año">2025</p>
+        </div>
+      </div>
+
+      <!-- Col 5, fila 2 -->
+      <div class="card" style="grid-column:5; grid-row:2;">
+        <div class="card-img" style="background-image: url('proyecto8.png');"></div>
+        <div class="card-overlay"></div>
+        <div class="card-info card-info--bottom">
+          <p class="card-categoria">Próximamente</p>
+          <a href="#" class="card-titulo">Título Proyecto 8</a>
+          <p class="card-año">2025</p>
+        </div>
+      </div>
+
+      <!--
+        CELDA VERTICAL — uso futuro (Reels/Instagram)
+        Descomenta para activar:
+
+      <div class="card" style="grid-column:6; grid-row:1 / span 2;">
+        <div class="card-img" style="background-image: url('proyecto-reel.png');"></div>
+        <div class="card-overlay"></div>
+        <div class="card-info card-info--bottom">
+          <p class="card-categoria">Reel</p>
+          <a href="#" class="card-titulo">Título Reel</a>
+          <p class="card-año">2025</p>
+        </div>
+      </div>
+      -->
+
+    </div>
+  </div>
+
+  <div class="scroll-hint">Desliza</div>
+
+  <script src="proyectos.js"></script>
+  <script src="transicion.js"></script>
+</body>
+</html>
