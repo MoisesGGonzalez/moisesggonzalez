@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <script src="head.js"></script>
   <meta charset="UTF-8" />
   <style id="page-block">body { visibility: hidden; }</style>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Moisés González · A La Múa Productions</title>
+  <title>A la múa Productions</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@200;300;400;700&display=swap" rel="stylesheet">
@@ -28,7 +29,7 @@
     </div>
 
     <!-- PANEL 2: BIO -->
-    <div class="panel panel-bio">
+     <div class="panel panel-bio" id="quien-soy-panel">
       <div class="bio-inner" id="bio-inner">
         <p class="bio-label">Sobre mí</p>
         <p class="bio-text">
@@ -44,7 +45,7 @@
     </div>
 
     <!-- PANEL 3: EXPERIENCIA — Dinam -->
-    <div class="panel">
+    <div class="panel" id="experiencia-panel">
       <div class="bg" style="background-image: url('proyecto1.png');"></div>
       <div class="border-frame"></div>
       <img src="logo-dinam.jpg" alt="Dinam Soluciones" class="proyecto-logo" width="100" height="60" loading="lazy">
@@ -71,19 +72,29 @@
 
   <!-- MENÚ VERTICAL HOME -->
   <div class="ui-fixed" id="ui-fixed">
-    <nav class="side-nav">
-      <div class="menu-item">
-        <a href="proyectos.html" class="nav-label">Proyectos</a>
-      </div>
-      <a href="contacto.html" class="nav-label">Contacto</a>
-      <div class="menu-item">
-        <a href="#" class="nav-label">Redes Sociales</a>
-        <div class="side-submenu">
-          <a href="https://www.instagram.com/alamua.productions/" target="_blank">Instagram</a>
-          <a href="https://www.linkedin.com/in/moisés-gonzález-gonzález-7237a2293" target="_blank">LinkedIn</a>
-        </div>
-      </div>
-    </nav>
+      <nav class="side-nav">
+  <div class="menu-item">
+    <a href="proyectos.html" class="nav-label">Proyectos</a>
+  </div>
+
+  <a href="contacto.html" class="nav-label">Contacto</a>
+
+  <div class="menu-item">
+    <a href="#" class="nav-label">Redes Sociales</a>
+    <div class="side-submenu">
+      <a href="https://www.instagram.com/alamua.productions/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://www.linkedin.com/in/moisés-gonzález-gonzález-7237a2293" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    </div>
+  </div>
+
+  <div class="menu-item">
+    <a href="#" class="nav-label nav-anchor" data-scroll-target="quien-soy">Quién soy</a>
+  </div>
+
+  <div class="menu-item">
+    <a href="#" class="nav-label nav-anchor" data-scroll-target="experiencia">Experiencia</a>
+  </div>
+</nav>
   </div>
 
   <!-- HAMBURGUESA -->
@@ -94,26 +105,23 @@
   </div>
 
   <!-- OVERLAY MENÚ -->
-  <div class="menu-overlay" id="menu-overlay">
-    <nav class="overlay-nav">
-      <div class="menu-item">
-        <a href="proyectos.html">Proyectos</a>
-        <div class="overlay-submenu">
-          <a href="proyectos.html">Cortometrajes</a>
-          <a href="proyectos.html">Videoclips</a>
-          <a href="proyectos.html">Otros</a>
-        </div>
+<div class="menu-overlay" id="menu-overlay">
+  <nav class="overlay-nav">
+    <a href="#" data-scroll-target="inicio">Inicio</a>
+    <a href="#" data-scroll-target="quien-soy">Quién soy</a>
+    <a href="#" data-scroll-target="experiencia">Experiencia</a>
+    <a href="proyectos.html">Proyectos</a>
+    <a href="contacto.html">Contacto</a>
+
+    <div class="menu-item">
+      <a href="#">Redes Sociales</a>
+      <div class="overlay-submenu">
+        <a href="https://www.instagram.com/alamua.productions/" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://www.linkedin.com/in/moisés-gonzález-gonzález-7237a2293" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </div>
-      <a href="contacto.html">Contacto</a>
-      <div class="menu-item">
-        <a href="#">Redes Sociales</a>
-        <div class="overlay-submenu">
-          <a href="https://www.instagram.com/alamua.productions/" target="_blank">Instagram</a>
-          <a href="https://www.linkedin.com/in/moisés-gonzález-gonzález-7237a2293" target="_blank">LinkedIn</a>
-        </div>
-      </div>
-    </nav>
-  </div>
+    </div>
+  </nav>
+</div>
 
   <div class="scroll-hint">Desliza</div>
 
