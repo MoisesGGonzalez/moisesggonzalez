@@ -1,25 +1,112 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <script src="head.js"></script>
   <meta charset="UTF-8" />
   <style id="page-block">body { visibility: hidden; }</style>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>La Gran Manzana · A La Múa Productions</title>
+  <title>La Gran Manzana · siempre a la múa</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@200;300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="experiencia.css">
+  <style>
+    .exp-link-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    .exp-submenu {
+      display: none;
+      position: absolute;
+      left: 100%;
+      bottom: 0;
+      top: auto;
+      margin-left: 12px;
+      background: rgba(15, 15, 15, 0.97);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 8px 0;
+      min-width: 180px;
+      z-index: 9999;
+      white-space: nowrap;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+
+    .exp-submenu.open {
+      display: block;
+    }
+
+    .exp-submenu a {
+      display: block;
+      padding: 8px 16px;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      transition: color 0.2s, background 0.2s;
+    }
+
+    .exp-submenu a:hover {
+      color: #fff;
+      background: rgba(255,255,255,0.07);
+    }
+
+    .exp-link.active {
+      opacity: 1;
+      color: #fff;
+    }
+
+    .mantenimiento-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 40;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.62);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+      pointer-events: none;
+      text-align: center;
+      padding: 24px;
+    }
+
+    .mantenimiento-texto {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 5vw, 4.5rem);
+      letter-spacing: 6px;
+      line-height: 1;
+      color: rgba(255,255,255,0.92);
+      text-transform: uppercase;
+      text-shadow: 0 10px 30px rgba(0,0,0,0.45);
+    }
+
+    .mantenimiento-subtexto {
+      margin-top: 14px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+    }
+  </style>
 </head>
 <body>
 
   <div class="grain"></div>
 
-  <!-- BANDA IZQUIERDA — fija -->
+  <div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
   <aside class="exp-panel">
     <div class="exp-panel-inner">
-
-      <a href="index.html" class="exp-back">← Volver</a>
 
       <div class="exp-meta">
         <p class="exp-eyebrow">Experiencia</p>
@@ -30,65 +117,136 @@
 
       <div class="exp-info">
         <p class="exp-info-label">Puesto</p>
-        <p class="exp-info-valor">Diseñador gráfico</p>
+        <p class="exp-info-valor">Creador de contenido</p>
       </div>
 
       <div class="exp-info">
         <p class="exp-info-label">Período</p>
-        <p class="exp-info-valor">2025</p>
+        <p class="exp-info-valor">2024/25</p>
       </div>
 
       <div class="exp-divider"></div>
 
       <p class="exp-desc">
-        Generación de diseños para  publicaciones, videos, publicidad, cartelería y visuales para pantallas.
-        <br> Diversidad de creaciones para todas sus entidades: hoteles, discotecas, restaurantes...
+        Desarrollo de contenido audiovisual y piezas adaptadas a redes sociales, manteniendo una identidad visual coherente y una comunicación directa con la audiencia.
       </p>
 
       <div class="exp-divider"></div>
 
       <div class="exp-links">
         <a href="https://lagranmanzana.com/" class="exp-link" target="_blank" rel="noopener noreferrer">Web oficial →</a>
-        <a href="https://www.instagram.com/lgmgandia/" class="exp-link" target="_blank" rel="noopener noreferrer">Instagram →</a>
+
+        <div class="exp-link-wrapper">
+          <a href="#" class="exp-link" data-submenu="submenu-ig">Instagram →</a>
+          <div class="exp-submenu" id="submenu-ig">
+            <a href="https://www.instagram.com/lgmgandia/" target="_blank" rel="noopener noreferrer">LGM</a>
+            <a href="https://www.instagram.com/falkatagandia/" target="_blank" rel="noopener noreferrer">FALKATA</a>
+            <a href="https://www.instagram.com/bacarragandia/" target="_blank" rel="noopener noreferrer">BACARRÁ</a>
+            <a href="https://www.instagram.com/bacarragandia/" target="_blank" rel="noopener noreferrer">ECLIPSE</a>
+            <a href="https://www.instagram.com/playavaradero/" target="_blank" rel="noopener noreferrer">PLAYA VARADERO</a>
+          </div>
+        </div>
       </div>
 
     </div>
   </aside>
 
-  <!-- SLIDER DE CONTENIDO -->
   <div class="exp-slider" id="exp-slider">
     <div class="exp-mosaico">
-
-      <div class="exp-card exp-card--tall">
-        <div class="exp-img" style="background-image: url('manzana1.png');"></div>
-      </div>
-
-      <div class="exp-card exp-card--normal">
-        <div class="exp-img" style="background-image: url('manzana2.png');"></div>
-      </div>
-
-      <div class="exp-card exp-card--normal">
-        <div class="exp-img" style="background-image: url('manzana3.png');"></div>
-      </div>
-
-      <div class="exp-card exp-card--wide">
-        <div class="exp-img" style="background-image: url('manzana4.png');"></div>
-      </div>
-
-      <div class="exp-card exp-card--normal">
-        <div class="exp-img" style="background-image: url('manzana5.png');"></div>
-      </div>
-
-      <div class="exp-card exp-card--tall">
-        <div class="exp-img" style="background-image: url('manzana6.png');"></div>
-      </div>
-
+      <div class="exp-card exp-card--tall"><div class="exp-img"></div></div>
+      <div class="exp-card exp-card--normal"><div class="exp-img"></div></div>
+      <div class="exp-card exp-card--normal"><div class="exp-img"></div></div>
+      <div class="exp-card exp-card--wide"><div class="exp-img"></div></div>
+      <div class="exp-card exp-card--normal"><div class="exp-img"></div></div>
+      <div class="exp-card exp-card--tall"><div class="exp-img"></div></div>
     </div>
+
+    <div class="mantenimiento-overlay">
+      <div>
+        <div class="mantenimiento-texto">Mosaico en mantenimiento</div>
+        <div class="mantenimiento-subtexto">Próximamente contenido actualizado</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="menu-overlay" id="menu-overlay">
+    <nav class="overlay-nav">
+      <a href="index.html">Inicio</a>
+      <a href="proyectos.html">Proyectos</a>
+      <a href="contacto.html">Contacto</a>
+      <div class="menu-item">
+        <a href="#">Redes Sociales</a>
+        <div class="overlay-submenu">
+          <a href="https://www.instagram.com/alamua.productions/" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="https://www.linkedin.com/in/moisés-gonzález-gonzález-7237a2293" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+      </div>
+    </nav>
   </div>
 
   <div class="scroll-hint">Desliza</div>
 
+  <script src="nav-experiencia.js"></script>
   <script src="experiencia.js"></script>
   <script src="transicion.js"></script>
+
+  <script>
+    document.querySelectorAll('.exp-link[data-submenu]').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        var targetId = this.getAttribute('data-submenu');
+        var targetMenu = document.getElementById(targetId);
+        var isOpen = targetMenu.classList.contains('open');
+
+        document.querySelectorAll('.exp-submenu').forEach(function(m) {
+          m.classList.remove('open');
+        });
+        document.querySelectorAll('.exp-link[data-submenu]').forEach(function(l) {
+          l.classList.remove('active');
+        });
+
+        if (!isOpen) {
+          targetMenu.classList.add('open');
+          this.classList.add('active');
+        }
+      });
+    });
+
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.exp-panel')) {
+        document.querySelectorAll('.exp-submenu').forEach(function(m) {
+          m.classList.remove('open');
+        });
+        document.querySelectorAll('.exp-link[data-submenu]').forEach(function(l) {
+          l.classList.remove('active');
+        });
+      }
+    });
+  </script>
+
+  <div class="lightbox-overlay" id="lightbox">
+    <img src="" alt="" id="lightbox-img">
+  </div>
+
+  <script>
+    var lightbox = document.getElementById('lightbox');
+    var lightboxImg = document.getElementById('lightbox-img');
+
+    document.querySelectorAll('.exp-card:not(.exp-card--video) .exp-img').forEach(function(el) {
+      el.style.cursor = 'default';
+    });
+
+    lightbox.addEventListener('click', function(e) {
+      if (e.target !== lightboxImg) {
+        lightbox.classList.remove('visible');
+        setTimeout(function() {
+          lightbox.classList.remove('open');
+          lightboxImg.src = '';
+          document.getElementById('exp-slider').focus();
+        }, 350);
+      }
+    });
+  </script>
+
 </body>
 </html>
