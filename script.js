@@ -67,11 +67,12 @@ function updateMenuAnimation(scrollX) {
     }
   }
 
-  navLabels.forEach((label, i) => {
-    const itemEl = label.closest('.menu-item') || label.parentElement;
-    const rect   = itemEl.getBoundingClientRect();
+navLabels.forEach((label, i) => {
+  const itemEl = label.closest('.menu-item') || label.parentElement;
+  const rect = itemEl.getBoundingClientRect();
+  const isMainAnimatedItem = i < 3 && !label.dataset.scrollTarget;
 
-    if (i < 3) {
+  if (isMainAnimatedItem) {
       if (animComplete) {
         // Ocultar labels — la hamburguesa real toma el relevo
         label.style.opacity        = '0';
@@ -148,3 +149,39 @@ const observer = new IntersectionObserver((entries) => {
 }, { root: slider, threshold: 0.3 });
 
 animatedEls.forEach(el => observer.observe(el));
+
+// ── NAVEGACIÓN INTERNA DEL HOME ──
+const quienSoyPanel = document.getElementById('quien-soy-panel');
+const experienciaPanel = document.getElementById('experiencia-panel');
+
+function goToX(destination) {
+  if (!slider) return;
+
+  targetX = Math.max(0, Math.min(destination, slider.scrollWidth - slider.clientWidth));
+
+  if (!rafId) animate();
+
+  if (menuOverlay) menuOverlay.classList.remove('open');
+  if (hamburger) hamburger.classList.remove('open');
+}
+
+document.querySelectorAll('[data-scroll-target="inicio"]').forEach(link => {
+  link.addEventListener('click', function (e) {
+    e.preventDefault();
+    goToX(0);
+  });
+});
+
+document.querySelectorAll('[data-scroll-target="quien-soy"]').forEach(link => {
+  link.addEventListener('click', function (e) {
+    e.preventDefault();
+    if (quienSoyPanel) goToX(quienSoyPanel.offsetLeft);
+  });
+});
+
+document.querySelectorAll('[data-scroll-target="experiencia"]').forEach(link => {
+  link.addEventListener('click', function (e) {
+    e.preventDefault();
+    if (experienciaPanel) goToX(experienciaPanel.offsetLeft);
+  });
+});
