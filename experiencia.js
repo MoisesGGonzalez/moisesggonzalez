@@ -7,3 +7,4 @@ if (slider) {
     slider.scrollLeft += e.deltaY * 1.2;
   }, { passive: false });
 }
+
