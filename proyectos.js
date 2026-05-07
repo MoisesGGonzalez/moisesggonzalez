@@ -51,10 +51,11 @@ function openMedia(type, src) {
 
   if (type === 'video') {
     mediaStage.innerHTML = `
-      <video controls playsinline preload="metadata">
-        <source src="${src}" type="video/mp4">
-        Tu navegador no puede reproducir este vídeo.
-      </video>
+      <div class="media-video-wrap">
+        <video id="project-video" controls playsinline preload="metadata">
+          <source src="${src}" type="video/mp4">
+        </video>
+      </div>
     `;
   }
 
@@ -73,9 +74,20 @@ function openMedia(type, src) {
   mediaViewer.setAttribute('aria-hidden', 'false');
   document.body.classList.add('viewer-open');
 
-  const video = mediaStage.querySelector('video');
-  if (video) {
-    video.load();
+  if (type === 'video') {
+    const video = document.getElementById('project-video');
+
+    if (video) {
+      video.load();
+
+      video.addEventListener('loadeddata', () => {
+        console.log('Vídeo cargado correctamente:', src);
+      });
+
+      video.addEventListener('error', () => {
+        console.error('Error cargando vídeo:', src, video.error);
+      });
+    }
   }
 }
 
