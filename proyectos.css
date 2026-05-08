@@ -85,9 +85,9 @@ header {
   height: 100vh;
   display: grid;
   gap: 3px;
-  grid-template-columns: repeat(5, 50vw);
+  grid-template-columns: repeat(6, 50vw);
   grid-template-rows: 50vh 50vh;
-  width: calc(5 * 50vw + 4 * 3px);
+  width: calc(6 * 50vw + 4 * 3px);
 }
 
 /* ── TARJETA ── */
@@ -237,8 +237,8 @@ header {
   }
 
   .mosaico {
-    grid-template-columns: repeat(5, 78vw);
-    width: calc(5 * 78vw + 4 * 3px);
+    grid-template-columns: repeat(6, 78vw);
+    width: calc(6 * 78vw + 4 * 3px);
   }
 
   .card-info {
@@ -269,8 +269,8 @@ header {
 
 @media (max-width: 640px) {
   .mosaico {
-    grid-template-columns: repeat(5, 88vw);
-    width: calc(5 * 88vw + 4 * 3px);
+    grid-template-columns: repeat(6, 88vw);
+    width: calc(6 * 88vw + 4 * 3px);
   }
 
   .card-img {
