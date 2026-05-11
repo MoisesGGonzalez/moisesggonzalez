@@ -15,6 +15,7 @@ let currentX = 0;
 let rafId    = null;
 
 window.addEventListener('wheel', (e) => {
+  if (window.innerWidth <= 768) return; // móvil: nativo
   e.preventDefault();
   targetX += e.deltaY * 2;
   targetX = Math.max(0, Math.min(targetX, slider.scrollWidth - slider.clientWidth));
@@ -36,16 +37,21 @@ function animate() {
   }
 }
 
-let touchStartX = 0;
-window.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; });
-window.addEventListener('touchend', (e) => {
-  const diff = touchStartX - e.changedTouches[0].clientX;
-  if (Math.abs(diff) > 50) {
-    targetX += diff * 3;
-    targetX = Math.max(0, Math.min(targetX, slider.scrollWidth - slider.clientWidth));
-    if (!rafId) animate();
-  }
-});
+// Touch: en móvil dejamos el scroll nativo, en desktop mantenemos el JS
+if (window.innerWidth > 768) {
+  let touchStartX = 0;
+  window.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+  });
+  window.addEventListener('touchend', (e) => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) {
+      targetX += diff * 3;
+      targetX = Math.max(0, Math.min(targetX, slider.scrollWidth - slider.clientWidth));
+      if (!rafId) animate();
+    }
+  });
+}
 
 function updateMenuAnimation(scrollX) {
   const progress = Math.min(Math.max(scrollX / ANIM_END, 0), 1);
@@ -184,4 +190,23 @@ document.querySelectorAll('[data-scroll-target="experiencia"]').forEach(link => 
     e.preventDefault();
     if (experienciaPanel) goToX(experienciaPanel.offsetLeft);
   });
+});
+
+// ── MÓVIL: hamburguesa siempre visible, sin depender del scroll ──
+if (window.innerWidth <= 768) {
+  hamburger.style.opacity = '1';
+  hamburger.style.pointerEvents = 'all';
+  hamburger.classList.add('visible');
+
+  // En móvil, el scroll del slider no activa la animación de menú
+  window.removeEventListener('wheel', null);
+}
+
+// ── MÓVIL: recalcular ANIM_END al girar pantalla ──
+window.addEventListener('resize', () => {
+  if (window.innerWidth <= 768) {
+    hamburger.style.opacity = '1';
+    hamburger.style.pointerEvents = 'all';
+    hamburger.classList.add('visible');
+  }
 });

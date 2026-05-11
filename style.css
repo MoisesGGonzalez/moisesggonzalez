@@ -233,23 +233,146 @@ html, body {
 .scroll-hint::after { content: '→'; font-size: 1rem; }
 
 /* ════════════════════════════════════════
-   RESPONSIVE MÓVIL
+RESPONSIVE MÓVIL
 ════════════════════════════════════════ */
 @media (max-width: 768px) {
-  /* Menú lateral — oculto en móvil */
+
+  /* ── BODY Y LAYOUT BASE ── */
+  html, body {
+    height: 100svh;
+    overflow: hidden;
+  }
+
+  /* ── MENÚ LATERAL — oculto ── */
   .side-nav { display: none; }
 
-  /* Hamburguesa — siempre visible en móvil */
+  /* ── HAMBURGUESA — siempre visible ── */
   .hamburger {
     opacity: 1 !important;
     pointer-events: all !important;
+    top: clamp(20px, 5vw, 36px);
+    left: clamp(20px, 5vw, 48px);
+    width: 32px;
+    height: 32px;
   }
 
-  /* Overlay menú — padding ajustado */
+  /* ── OVERLAY MENÚ ── */
   .menu-overlay {
-    padding-left: 36px;
+    padding-left: clamp(28px, 8vw, 60px);
+    padding-right: clamp(28px, 8vw, 60px);
+    justify-content: center;
+    gap: 0;
   }
 
-  /* Scroll hint — oculto en móvil */
+  .menu-overlay .overlay-nav {
+    gap: clamp(16px, 4vh, 28px);
+  }
+
+  .menu-overlay .overlay-nav > .menu-item > a,
+  .menu-overlay .overlay-nav > a {
+    font-size: clamp(2.2rem, 11vw, 4rem);
+    letter-spacing: clamp(3px, 1.5vw, 6px);
+  }
+
+  /* ── SCROLL HINT — oculto ── */
   .scroll-hint { display: none; }
+
+  /* ── SLIDER ── */
+.slider {
+  position: fixed;
+  inset: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x;
+}
+
+  .slider::-webkit-scrollbar { display: none; }
+
+  /* ── PANELES ── */
+  .panel {
+    width: 100vw;
+    min-width: 100vw;
+    height: 100svh;
+    flex-shrink: 0;
+  }
+
+  /* ── PANEL INICIO ── */
+  .panel-inicio {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: clamp(60px, 12svh, 100px);
+    padding-left: clamp(24px, 6vw, 60px);
+    padding-right: clamp(24px, 6vw, 60px);
+  }
+
+  .nombre-title,
+  .panel-inicio h1 {
+    font-size: clamp(3.5rem, 18vw, 7rem);
+    letter-spacing: clamp(4px, 2vw, 10px);
+    line-height: 0.9;
+  }
+
+  /* ── PANEL QUIÉN SOY ── */
+  .panel-bio,
+  #quien-soy-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(70px, 15svh, 120px) clamp(24px, 6vw, 60px) clamp(40px, 8svh, 80px);
+  }
+
+  .bio-inner,
+  .bio-text {
+    max-width: 100%;
+  }
+
+  .bio-inner h2,
+  .bio-label {
+    font-size: clamp(0.62rem, 2.5vw, 0.8rem);
+    letter-spacing: clamp(3px, 1.5vw, 5px);
+    margin-bottom: clamp(16px, 4svh, 28px);
+  }
+
+  .bio-inner p,
+  .bio-copy {
+    font-size: clamp(0.95rem, 3.8vw, 1.2rem);
+    line-height: 1.55;
+  }
+
+  /* ── PANEL EXPERIENCIA ── */
+  #experiencia-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(70px, 15svh, 120px) clamp(24px, 6vw, 60px) clamp(40px, 8svh, 80px);
+    overflow-y: auto;
+  }
+
+  .content-proyecto {
+    margin-bottom: clamp(24px, 5svh, 40px);
+  }
+
+  .proyecto-categoria,
+  .proyecto-empresa {
+    font-size: clamp(0.6rem, 2.2vw, 0.72rem);
+    letter-spacing: clamp(3px, 1.2vw, 4px);
+    margin-bottom: clamp(6px, 1.5svh, 10px);
+  }
+
+  .proyecto-titulo,
+  .content-proyecto h3 {
+    font-size: clamp(1.6rem, 7vw, 2.8rem);
+    letter-spacing: clamp(2px, 1vw, 4px);
+    line-height: 1;
+    margin-bottom: clamp(8px, 2svh, 14px);
+  }
+
+  .proyecto-rol,
+  .content-proyecto p {
+    font-size: clamp(0.78rem, 3.2vw, 1rem);
+    line-height: 1.5;
+  }
 }
