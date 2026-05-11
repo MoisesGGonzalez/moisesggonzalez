@@ -253,3 +253,198 @@ html, body {
   90% { background-position: -10px -60px; }
  100% { background-position:  60px  30px; }
 }
+
+/* ════════════════════════════════════════
+RESPONSIVE MÓVIL — CONTACTO
+════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+  html, body {
+    height: 100svh;
+    overflow: hidden;
+  }
+
+  /* ── LAYOUT: tarjeta vertical sin scroll ── */
+  .contacto-layout {
+    flex-direction: column;
+    height: 100svh;
+    overflow: hidden;
+  }
+
+  /* ── FOTO: ocupa parte superior ── */
+  .contacto-bg {
+    flex: none;
+    height: 42svh;
+    width: 100%;
+  }
+
+  /* ── OVERLAY: degradado de abajo hacia arriba ── */
+  .bg-overlay {
+    background: linear-gradient(
+      to top,
+      rgba(0,0,0,1) 0%,
+      rgba(0,0,0,0.5) 40%,
+      rgba(0,0,0,0) 100%
+    );
+  }
+
+  /* ── CLAIM: oculto en móvil ── */
+  .contacto-claim { display: none; }
+
+  /* ── BOTÓN VOLVER: oculto en móvil ── */
+  .contacto-back { display: none; }
+
+  /* ── PANEL DATOS: ocupa el resto exacto ── */
+  .contacto-panel {
+    width: 100%;
+    height: 58svh;
+    border-left: none;
+    border-top: none;
+    align-items: flex-start;
+    overflow: hidden;
+  }
+
+  /* ── CONTENIDO INTERIOR ── */
+.panel-inner {
+  padding: clamp(16px, 3svh, 28px) clamp(24px, 6vw, 40px) clamp(16px, 3svh, 24px);
+  width: 100%;
+  box-sizing: border-box;
+}
+/* ── PROTECCIÓN TEXTOS LARGOS ── */
+.item-value,
+.red-link,
+.disponibilidad-texto,
+.panel-title,
+.panel-eyebrow {
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.item-value {
+  white-space: normal;
+}
+
+  /* ── DISPONIBILIDAD: arriba del todo ── */
+  .contacto-disponibilidad {
+    margin-bottom: clamp(10px, 2svh, 16px);
+  }
+
+  .disponibilidad-texto {
+    font-size: 0.6rem;
+    letter-spacing: 1.5px;
+  }
+
+  .panel-eyebrow {
+    font-size: 0.56rem;
+    letter-spacing: 4px;
+    margin-bottom: 6px;
+  }
+
+  .panel-title {
+    font-size: clamp(2rem, 9vw, 2.8rem);
+    letter-spacing: 3px;
+    margin-bottom: clamp(12px, 2.5svh, 20px);
+  }
+
+  .panel-divider {
+    margin: clamp(10px, 2svh, 16px) 0;
+  }
+
+  .contacto-item {
+    margin-bottom: clamp(10px, 2svh, 16px);
+  }
+
+  .item-label {
+    font-size: 0.56rem;
+    letter-spacing: 3px;
+    margin-bottom: 3px;
+  }
+
+  .item-value {
+    font-size: clamp(0.78rem, 3vw, 0.95rem);
+    letter-spacing: 0.5px;
+  }
+
+  /* ── REDES: fila horizontal ── */
+  .redes-lista {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: clamp(8px, 2vw, 14px);
+  }
+
+  .red-link {
+    font-size: clamp(0.78rem, 3vw, 0.95rem);
+  }
+
+  .red-link:hover {
+    letter-spacing: 1px;
+  }
+
+  /* ── HAMBURGUESA: siempre visible ── */
+  .hamburger {
+    opacity: 1 !important;
+    pointer-events: all !important;
+    top: clamp(16px, 4svh, 28px);
+    left: clamp(20px, 5vw, 36px);
+  }
+
+  /* ── OVERLAY MENÚ ── */
+  .menu-overlay {
+    padding-left: clamp(28px, 7vw, 52px);
+  }
+
+  .menu-overlay .overlay-nav {
+    gap: clamp(16px, 4svh, 28px);
+  }
+
+  .menu-overlay .overlay-nav > .menu-item > a,
+  .menu-overlay .overlay-nav > a {
+    font-size: clamp(2.2rem, 11vw, 4rem);
+    letter-spacing: clamp(3px, 1.5vw, 6px);
+  }
+}
+/* ── HAMBURGUESA RESET ── */
+.hamburger {
+  position: fixed;
+  top: 36px;
+  left: 48px;
+  z-index: 500;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
+  padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.75);
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.hamburger:hover span {
+  background: #fff;
+}
+
+.hamburger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}

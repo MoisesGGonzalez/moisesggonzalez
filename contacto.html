@@ -16,25 +16,48 @@
 
   <div class="grain"></div>
 
+  <!-- HAMBURGUESA -->
+  <button class="hamburger" id="hamburger" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+
+  <!-- OVERLAY MENÚ -->
+  <nav class="menu-overlay" id="menu-overlay">
+    <div class="overlay-nav">
+      <div class="menu-item">
+        <a href="index.html" data-scroll-target="inicio" class="nav-label">Inicio</a>
+      </div>
+      <div class="menu-item">
+        <a href="index.html" data-scroll-target="quien-soy" class="nav-label">Quién soy</a>
+      </div>
+      <div class="menu-item">
+        <a href="index.html" data-scroll-target="experiencia" class="nav-label">Experiencia</a>
+      </div>
+      <div class="menu-item">
+        <a href="proyectos.html" class="nav-label">Proyectos</a>
+      </div>
+      <div class="menu-item">
+        <a href="contacto.html" class="nav-label">Contacto</a>
+      </div>
+    </div>
+  </nav>
+
   <div class="contacto-layout">
 
-    <!-- LADO IZQUIERDO — imagen -->
+    <!-- FOTO -->
     <div class="contacto-bg">
       <div class="bg-img" style="background-image: url('fondo3.png');"></div>
       <div class="bg-overlay"></div>
-
-      <div class="contacto-claim">
-        <p class="claim-label">A La Múa Productions</p>
-        <h1 class="claim-title">Hagamos<br>algo grande.</h1>
-        <p class="claim-sub">Tenerife · Canarias · España</p>
-      </div>
-
-      <a href="index.html" class="contacto-back">← Volver</a>
     </div>
 
-    <!-- BANDA DERECHA -->
+    <!-- DATOS -->
     <aside class="contacto-panel">
       <div class="panel-inner">
+
+        <div class="contacto-disponibilidad">
+          <span class="disponibilidad-dot"></span>
+          <p class="disponibilidad-texto">Disponible para nuevos proyectos</p>
+        </div>
 
         <p class="panel-eyebrow">Contacto</p>
         <h2 class="panel-title">Moisés<br>González</h2>
@@ -62,16 +85,9 @@
           <p class="item-label">Redes</p>
           <div class="redes-lista">
             <a href="https://www.instagram.com/alamua.productions/" class="red-link" target="_blank" rel="noopener noreferrer">Instagram</a>
-            <a href="#" class="red-link" target="_blank" rel="noopener noreferrer">YouTube</a>
+           <!-- <a href="#" class="red-link" target="_blank" rel="noopener noreferrer">YouTube</a> -->
             <a href="https://www.linkedin.com/in/moisés-gonzález-gonzález-7237a2293" class="red-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           </div>
-        </div>
-
-        <div class="panel-divider"></div>
-
-        <div class="contacto-disponibilidad">
-          <span class="disponibilidad-dot"></span>
-          <p class="disponibilidad-texto">Disponible para nuevos proyectos</p>
         </div>
 
       </div>
@@ -80,5 +96,6 @@
   </div>
 
   <script src="transicion.js"></script>
+  <script src="contacto.js"></script>
 </body>
 </html>
