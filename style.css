@@ -376,3 +376,28 @@ RESPONSIVE MÓVIL
     line-height: 1.5;
   }
 }
+
+:root {
+  --app-height: 100vh;
+}
+
+@media (max-width: 768px) {
+  html, body {
+    width: 100%;
+    height: var(--app-height);
+    min-height: var(--app-height);
+    overflow: hidden;
+  }
+
+  .hero,
+  .home-panel,
+  .main-section {
+    height: var(--app-height);
+    min-height: var(--app-height);
+  }
+
+  .page-inner {
+    padding-top: calc(24px + env(safe-area-inset-top));
+    padding-bottom: calc(24px + env(safe-area-inset-bottom));
+  }
+}

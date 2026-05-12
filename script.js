@@ -210,3 +210,19 @@ window.addEventListener('resize', () => {
     hamburger.classList.add('visible');
   }
 });
+
+(function () {
+  function setAppHeight() {
+    const h = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+    document.documentElement.style.setProperty('--app-height', `${h}px`);
+  }
+
+  setAppHeight();
+  window.addEventListener('resize', setAppHeight);
+  window.addEventListener('orientationchange', setAppHeight);
+
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', setAppHeight);
+    window.visualViewport.addEventListener('scroll', setAppHeight);
+  }
+})();

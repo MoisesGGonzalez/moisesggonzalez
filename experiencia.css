@@ -570,6 +570,39 @@ html, body {
   }
 
   .scroll-hint { display: none; }
+  :root {
+  --app-height: 100vh;
+}
+
+@media (max-width: 768px) {
+  html, body {
+    width: 100%;
+    height: var(--app-height);
+    min-height: var(--app-height);
+    overflow: hidden;
+    background: #000;
+    color: #fff;
+  }
+
+  .exp-panel,
+  .exp-slider {
+    height: var(--app-height);
+    min-height: var(--app-height);
+  }
+
+  .exp-panel-inner {
+    padding-top: calc(72px + env(safe-area-inset-top));
+    padding-bottom: calc(32px + env(safe-area-inset-bottom));
+  }
+
+  .hamburger {
+    top: calc(18px + env(safe-area-inset-top)) !important;
+  }
+
+  .mobile-swipe-hint {
+    bottom: calc(24px + env(safe-area-inset-bottom));
+  }
+}
 }
 
 @media (min-width: 769px) {
@@ -578,3 +611,4 @@ html, body {
   .hamburger { display: none; }
   .menu-overlay { display: none !important; }
 }
+
