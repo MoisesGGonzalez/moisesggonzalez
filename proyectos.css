@@ -267,58 +267,6 @@ header {
   }
 }
 
-@media (max-width: 640px) {
-  .mosaico {
-    grid-template-columns: repeat(6, 88vw);
-    width: calc(6 * 88vw + 4 * 3px);
-  }
-
-  .card-img {
-    filter: grayscale(20%) brightness(0.88);
-  }
-
-  .card-overlay {
-    background: rgba(0, 0, 0, 0.18);
-  }
-
-  .card-info {
-    opacity: 1;
-    transform: none;
-  }
-
-  .card-info--top,
-  .card-info--bottom {
-    transform: none;
-  }
-
-  .card-titulo {
-    font-size: clamp(1.35rem, 6vw, 2rem);
-  }
-
-  .scroll-hint {
-    opacity: 0.75;
-  }
-
-    .card-desc {
-    opacity: 1;
-    transform: none;
-    left: 18px;
-    right: 18px;
-    max-width: 85%;
-    font-size: 0.8rem;
-    line-height: 1.4;
-    color: rgba(255, 255, 255, 0.72);
-  }
-
-  .card-desc--top {
-    top: 18px;
-  }
-
-  .card-desc--bottom {
-    bottom: 18px;
-  }
-}
-
 .media-viewer {
   position: fixed;
   inset: 0;
@@ -392,20 +340,230 @@ body.viewer-open header {
   opacity: 0;
 }
 
-@media (max-width: 900px) {
-  .media-panel {
-    inset: 0;
+/* ════════════════════════════════════════
+RESPONSIVE MÓVIL — PROYECTOS
+════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+  html, body {
+    height: 100svh;
+    overflow: hidden;
   }
 
-  .media-stage {
+  /* ── HEADER MÓVIL: barra superior ── */
+  header {
+    top: 0;
+    right: 0;
+    left: 0;
+    transform: none;
     width: 100%;
-    height: 100%;
+    height: 56px;
+    background: rgba(0, 0, 0, 0.88);
+    backdrop-filter: blur(8px);
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 500;
+    pointer-events: all;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   }
 
-  .media-close {
-    top: 12px;
-    right: 12px;
+  .header-inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 0;
   }
+
+  .header-title {
+    font-size: clamp(1.4rem, 7vw, 2rem);
+    letter-spacing: 5px;
+    text-align: left;
+    text-shadow: none;
+    order: 2;
+  }
+
+  /* ── BOTÓN VOLVER: oculto, usamos hamburguesa ── */
+  .header-back { display: none; }
+
+  /* ── HAMBURGUESA EN HEADER ── */
+  .header-hamburger {
+    order: 1;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    outline: none;
+    padding: 0;
+    -webkit-appearance: none;
+    appearance: none;
+    flex-shrink: 0;
+  }
+
+  .header-hamburger span {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.75);
+    transition: transform 0.4s ease, opacity 0.4s ease;
+  }
+
+  .header-hamburger:hover span,
+  .header-hamburger.open span { background: #fff; }
+
+  .header-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .header-hamburger.open span:nth-child(2) { opacity: 0; }
+  .header-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* ── SLIDER: desplazado bajo el header ── */
+  .slider {
+    top: 56px;
+    height: calc(100svh - 56px);
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
+  }
+
+  /* ── MOSAICO: celdas de 80vw, última completa ── */
+  .mosaico {
+    height: calc(100svh - 56px);
+    grid-template-columns: repeat(6, 80vw);
+    grid-template-rows: 50% 50%;
+    width: calc(6 * 80vw + 5 * 3px + 20vw);
+  }
+
+  /* ── TARJETAS: siempre B/N ── */
+  .card-img {
+    filter: grayscale(100%) brightness(0.72);
+    transition: filter 0.5s ease, transform 0.5s ease;
+  }
+
+  /* Cancelar hover en móvil */
+  .card:hover .card-img {
+    transform: none;
+    filter: grayscale(100%) brightness(0.72);
+  }
+
+  .card:hover .card-overlay {
+    background: rgba(0, 0, 0, 0);
+  }
+
+  /* ── TARJETA ACTIVA (toque): color + overlay ── */
+  .card.active .card-img {
+    filter: grayscale(0%) brightness(1);
+    transform: scale(1.04);
+  }
+
+  .card.active .card-overlay {
+    background: rgba(0, 0, 0, 0.48);
+  }
+
+  /* ── INFO: siempre visible ── */
+.card-info {
+  opacity: 1;
+  transform: none !important;
+  pointer-events: none;
+  left: 14px;
+  right: 14px;
+  max-width: 90%;
+}
+
+.card-info--top { top: 14px; }
+.card-info--bottom { bottom: 14px; }
+
+.card-categoria {
+  font-size: 0.58rem;
+  letter-spacing: 3px;
+  margin-bottom: 4px;
+}
+
+.card-titulo {
+  font-size: clamp(1.1rem, 5vw, 1.6rem);
+  letter-spacing: 2px;
+  pointer-events: none;
+}
+
+.card-año {
+  font-size: 0.6rem;
+  letter-spacing: 2px;
+  margin-top: 4px;
+}
+
+/* ── DESC: oculta por defecto, visible al tocar ── */
+.card-desc {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  left: 14px;
+  right: 14px;
+  max-width: 90%;
+  font-size: clamp(0.7rem, 2.8vw, 0.85rem);
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.75);
+  pointer-events: none;
+}
+
+.card-desc--top { top: 70px; }
+.card-desc--bottom { bottom: 70px; }
+
+/* ── TARJETA ACTIVA: color + play + descripción ── */
+.card.active .card-desc {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+  /* ── PLAY BUTTON: visible solo en tarjeta activa ── */
+  .card-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.7);
+    z-index: 4;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.92);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .card-play::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 9px 0 9px 16px;
+    border-color: transparent transparent transparent #000;
+    margin-left: 3px;
+  }
+
+  .card.active .card-play {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    pointer-events: all;
+  }
+
+  /* ── SCROLL HINT: oculto ── */
+  .scroll-hint { display: none; }
 }
 
 .media-error {
