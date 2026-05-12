@@ -24,7 +24,7 @@
       bottom: 0;
       top: auto;
       margin-left: 12px;
-      background: rgba(15, 15, 15, 0.97);
+      background: rgba(15,15,15,0.97);
       border: 1px solid rgba(255,255,255,0.1);
       border-radius: 8px;
       padding: 8px 0;
@@ -34,9 +34,7 @@
       box-shadow: 0 8px 24px rgba(0,0,0,0.4);
     }
 
-    .exp-submenu.open {
-      display: block;
-    }
+    .exp-submenu.open { display: block; }
 
     .exp-submenu a {
       display: block;
@@ -59,6 +57,18 @@
       opacity: 1;
       color: #fff;
     }
+
+    /* En móvil el submenú baja debajo del link */
+    @media (max-width: 768px) {
+      .exp-submenu {
+        position: relative;
+        left: auto;
+        bottom: auto;
+        margin-left: 0;
+        margin-top: 8px;
+        width: 100%;
+      }
+    }
   </style>
 </head>
 <body>
@@ -71,7 +81,7 @@
     <span></span>
   </div>
 
-  <aside class="exp-panel">
+  <aside class="exp-panel" id="exp-panel">
     <div class="exp-panel-inner">
 
       <div class="exp-meta">
@@ -128,14 +138,18 @@
 
       </div>
 
+
+
     </div>
   </aside>
+      <div class="mobile-swipe-hint" id="mobile-swipe-hint">Ver trabajo</div>
 
+      
   <div class="exp-slider" id="exp-slider">
     <div class="exp-mosaico">
 
       <div class="exp-card exp-card--tall exp-card--video">
-        <video loop playsinline style="width:100%; height:100%; object-fit:cover; border-radius:inherit;">
+        <video loop playsinline style="width:100%;height:100%;object-fit:cover;">
           <source src="experiencia/dinam/versace.mp4" type="video/mp4">
         </video>
         <button class="video-play-btn" onclick="toggleVideo(this)">▶</button>
@@ -144,15 +158,15 @@
       </div>
 
       <div class="exp-card exp-card--normal">
-        <div class="exp-img" style="background-image: url('experiencia/dinam/pinguinos.jpg');"></div>
+        <div class="exp-img" style="background-image:url('experiencia/dinam/pinguinos.jpg');"></div>
       </div>
 
       <div class="exp-card exp-card--normal">
-        <div class="exp-img" style="background-image: url('experiencia/dinam/tractor.jpg');"></div>
+        <div class="exp-img" style="background-image:url('experiencia/dinam/tractor.jpg');"></div>
       </div>
 
       <div class="exp-card exp-card--wide exp-card--video">
-        <video loop playsinline style="width:100%; height:100%; object-fit:cover; border-radius:inherit;">
+        <video loop playsinline style="width:100%;height:100%;object-fit:cover;">
           <source src="experiencia/dinam/inesbe.mp4" type="video/mp4">
         </video>
         <button class="video-play-btn" onclick="toggleVideo(this)">▶</button>
@@ -161,15 +175,15 @@
       </div>
 
       <div class="exp-card exp-card--normal">
-        <div class="exp-img" style="background-image: url('experiencia/dinam/triste.jpg');"></div>
+        <div class="exp-img" style="background-image:url('experiencia/dinam/triste.jpg');"></div>
       </div>
 
       <div class="exp-card exp-card--normal">
-        <div class="exp-img" style="background-image: url('experiencia/dinam/alimentos.jpg');"></div>
+        <div class="exp-img" style="background-image:url('experiencia/dinam/alimentos.jpg');"></div>
       </div>
 
       <div class="exp-card exp-card--tall exp-card--video">
-        <video loop playsinline style="width:100%; height:100%; object-fit:cover; border-radius:inherit;">
+        <video loop playsinline style="width:100%;height:100%;object-fit:cover;">
           <source src="experiencia/dinam/matcha.mp4" type="video/mp4">
         </video>
         <button class="video-play-btn" onclick="toggleVideo(this)">▶</button>
@@ -178,31 +192,31 @@
       </div>
 
       <div class="exp-card exp-card--normal">
-        <div class="exp-img" style="background-image: url('experiencia/dinam/felicidad.jpg');"></div>
+        <div class="exp-img" style="background-image:url('experiencia/dinam/felicidad.jpg');"></div>
       </div>
 
       <div class="exp-card exp-card--normal">
-        <div class="exp-img" style="background-image: url('experiencia/dinam/caja.jpg');"></div>
+        <div class="exp-img" style="background-image:url('experiencia/dinam/caja.jpg');"></div>
       </div>
 
       <div class="exp-card exp-card--normal exp-card--video">
-        <video loop playsinline style="width:100%; height:100%; object-fit:cover; border-radius:inherit;">
+        <video loop playsinline style="width:100%;height:100%;object-fit:cover;">
           <source src="experiencia/dinam/leche.mp4" type="video/mp4">
         </video>
         <button class="video-play-btn" onclick="toggleVideo(this)">▶</button>
         <button class="video-fullscreen-btn" onclick="toggleFullscreen(this)">⛶</button>
       </div>
-     <div class="exp-card exp-card--wide">
-        <iframe src="https://www.youtube.com/embed/HQNk7pMGydQ" frameborder="0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen style="width:100%; height:100%; border-radius:inherit; border:none;"></iframe>
+
+      <div class="exp-card exp-card--wide">
+        <iframe src="https://www.youtube.com/embed/HQNk7pMGydQ" frameborder="0" allow="autoplay;encrypted-media;fullscreen" allowfullscreen style="width:100%;height:100%;border:none;"></iframe>
       </div>
 
       <div class="exp-card exp-card--normal">
-        <div class="exp-img" style="background-image: url('experiencia/dinam/bolsa.jpg');"></div>
+        <div class="exp-img" style="background-image:url('experiencia/dinam/bolsa.jpg');"></div>
       </div>
 
-
       <div class="exp-card exp-card--tall exp-card--video">
-        <video loop playsinline style="width:100%; height:100%; object-fit:cover; border-radius:inherit;">
+        <video loop playsinline style="width:100%;height:100%;object-fit:cover;">
           <source src="experiencia/dinam/eventos.mp4" type="video/mp4">
         </video>
         <button class="video-play-btn" onclick="toggleVideo(this)">▶</button>
@@ -211,27 +225,27 @@
       </div>
 
       <div class="exp-card exp-card--normal">
-        <div class="exp-img" style="background-image: url('experiencia/dinam/libros.jpg');"></div>
+        <div class="exp-img" style="background-image:url('experiencia/dinam/libros.jpg');"></div>
       </div>
 
       <div class="exp-card exp-card--normal">
-        <div class="exp-img" style="background-image: url('experiencia/dinam/trabajo.jpg');"></div>
+        <div class="exp-img" style="background-image:url('experiencia/dinam/trabajo.jpg');"></div>
       </div>
 
       <div class="exp-card exp-card--wide">
-        <iframe src="https://www.youtube.com/embed/iXsEpQVVu3M" frameborder="0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen style="width:100%; height:100%; border-radius:inherit; border:none;"></iframe>
+        <iframe src="https://www.youtube.com/embed/iXsEpQVVu3M" frameborder="0" allow="autoplay;encrypted-media;fullscreen" allowfullscreen style="width:100%;height:100%;border:none;"></iframe>
       </div>
 
       <div class="exp-card exp-card--normal">
-        <div class="exp-img" style="background-image: url('experiencia/dinam/soledad.jpg');"></div>
+        <div class="exp-img" style="background-image:url('experiencia/dinam/soledad.jpg');"></div>
       </div>
 
       <div class="exp-card exp-card--normal">
-        <div class="exp-img" style="background-image: url('experiencia/dinam/dibujo.jpg');"></div>
+        <div class="exp-img" style="background-image:url('experiencia/dinam/dibujo.jpg');"></div>
       </div>
 
       <div class="exp-card exp-card--tall exp-card--video">
-        <video loop playsinline style="width:100%; height:100%; object-fit:cover; border-radius:inherit;">
+        <video loop playsinline style="width:100%;height:100%;object-fit:cover;">
           <source src="experiencia/dinam/dani.mp4" type="video/mp4">
         </video>
         <button class="video-play-btn" onclick="toggleVideo(this)">▶</button>
@@ -240,15 +254,15 @@
       </div>
 
       <div class="exp-card exp-card--normal">
-        <div class="exp-img" style="background-image: url('experiencia/dinam/niños.jpg');"></div>
+        <div class="exp-img" style="background-image:url('experiencia/dinam/niños.jpg');"></div>
       </div>
 
       <div class="exp-card exp-card--normal">
-        <div class="exp-img" style="background-image: url('experiencia/dinam/pareja.jpg');"></div>
+        <div class="exp-img" style="background-image:url('experiencia/dinam/pareja.jpg');"></div>
       </div>
 
       <div class="exp-card exp-card--tall exp-card--video">
-        <video loop playsinline style="width:100%; height:100%; object-fit:cover; border-radius:inherit;">
+        <video loop playsinline style="width:100%;height:100%;object-fit:cover;">
           <source src="experiencia/dinam/gilda.mp4" type="video/mp4">
         </video>
         <button class="video-play-btn" onclick="toggleVideo(this)">▶</button>
@@ -259,7 +273,10 @@
     </div>
   </div>
 
-  <!-- MENU OVERLAY — fuera del exp-slider -->
+  <!-- Tirador para volver al panel -->
+  <button class="mobile-back-btn" id="mobile-back-btn" aria-label="Volver a información"></button>
+
+  <!-- MENU OVERLAY -->
   <div class="menu-overlay" id="menu-overlay">
     <nav class="overlay-nav">
       <a href="index.html">Inicio</a>
@@ -277,25 +294,25 @@
 
   <div class="scroll-hint">Desliza</div>
 
+  <!-- Lightbox -->
+  <div class="lightbox-overlay" id="lightbox">
+    <img src="" alt="" id="lightbox-img">
+  </div>
+
   <script src="nav-experiencia.js"></script>
   <script src="experiencia.js"></script>
   <script src="transicion.js"></script>
 
   <script>
+    // ── Submenús de links ──
     document.querySelectorAll('.exp-link[data-submenu]').forEach(function(link) {
       link.addEventListener('click', function(e) {
         e.preventDefault();
         var targetId = this.getAttribute('data-submenu');
         var targetMenu = document.getElementById(targetId);
         var isOpen = targetMenu.classList.contains('open');
-
-        document.querySelectorAll('.exp-submenu').forEach(function(m) {
-          m.classList.remove('open');
-        });
-        document.querySelectorAll('.exp-link[data-submenu]').forEach(function(l) {
-          l.classList.remove('active');
-        });
-
+        document.querySelectorAll('.exp-submenu').forEach(function(m) { m.classList.remove('open'); });
+        document.querySelectorAll('.exp-link[data-submenu]').forEach(function(l) { l.classList.remove('active'); });
         if (!isOpen) {
           targetMenu.classList.add('open');
           this.classList.add('active');
@@ -305,61 +322,45 @@
 
     document.addEventListener('click', function(e) {
       if (!e.target.closest('.exp-panel')) {
-        document.querySelectorAll('.exp-submenu').forEach(function(m) {
-          m.classList.remove('open');
-        });
-        document.querySelectorAll('.exp-link[data-submenu]').forEach(function(l) {
-          l.classList.remove('active');
-        });
+        document.querySelectorAll('.exp-submenu').forEach(function(m) { m.classList.remove('open'); });
+        document.querySelectorAll('.exp-link[data-submenu]').forEach(function(l) { l.classList.remove('active'); });
       }
     });
   </script>
 
   <script>
+    // ── Controles de vídeo ──
     function toggleVideo(btn) {
       var card = btn.closest('.exp-card--video');
       var video = card.querySelector('video');
       if (video.paused) {
-        video.play();
-        btn.textContent = '⏸';
-        card.classList.add('playing');
+        video.play(); btn.textContent = '⏸'; card.classList.add('playing');
       } else {
-        video.pause();
-        btn.textContent = '▶';
-        card.classList.remove('playing');
+        video.pause(); btn.textContent = '▶'; card.classList.remove('playing');
       }
     }
 
     function toggleVolume(btn) {
       var card = btn.closest('.exp-card--video');
       var video = card.querySelector('video');
-      if (video.muted) {
-        video.muted = false;
-        btn.textContent = '🔊';
-      } else {
-        video.muted = true;
-        btn.textContent = '🔇';
-      }
+      video.muted = !video.muted;
+      btn.textContent = video.muted ? '🔇' : '🔊';
     }
 
     function toggleFullscreen(btn) {
       var card = btn.closest('.exp-card--video');
       var video = card.querySelector('video');
-
       var overlay = document.createElement('div');
       overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0);z-index:99999;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background 0.35s ease;';
       document.body.appendChild(overlay);
-
       var clone = video.cloneNode(true);
       clone.style.cssText = 'max-width:100vw;max-height:100vh;width:auto;height:auto;object-fit:contain;cursor:default;transform:scale(0.8);opacity:0;transition:transform 0.35s cubic-bezier(0.16,1,0.3,1),opacity 0.35s ease;';
       clone.muted = video.muted;
       clone.currentTime = video.currentTime;
       overlay.appendChild(clone);
-
       video.pause();
       card.classList.remove('playing');
       card.querySelector('.video-play-btn').textContent = '▶';
-
       requestAnimationFrame(function() {
         requestAnimationFrame(function() {
           overlay.style.background = 'rgba(0,0,0,0.92)';
@@ -368,7 +369,6 @@
           clone.play();
         });
       });
-
       overlay.addEventListener('click', function(e) {
         if (e.target !== clone) {
           overlay.style.background = 'rgba(0,0,0,0)';
@@ -377,10 +377,7 @@
           video.currentTime = clone.currentTime;
           video.muted = clone.muted;
           clone.pause();
-          setTimeout(function() {
-            document.body.removeChild(overlay);
-            document.getElementById('exp-slider').focus();
-          }, 350);
+          setTimeout(function() { document.body.removeChild(overlay); }, 350);
         }
       });
     }
@@ -390,23 +387,16 @@
         var card = video.closest('.exp-card--video');
         var playBtn = card.querySelector('.video-play-btn');
         if (video.paused) {
-          video.play();
-          playBtn.textContent = '⏸';
-          card.classList.add('playing');
+          video.play(); playBtn.textContent = '⏸'; card.classList.add('playing');
         } else {
-          video.pause();
-          playBtn.textContent = '▶';
-          card.classList.remove('playing');
+          video.pause(); playBtn.textContent = '▶'; card.classList.remove('playing');
         }
       });
     });
   </script>
 
-  <div class="lightbox-overlay" id="lightbox">
-    <img src="" alt="" id="lightbox-img">
-  </div>
-
   <script>
+    // ── Lightbox para imágenes ──
     var lightbox = document.getElementById('lightbox');
     var lightboxImg = document.getElementById('lightbox-img');
 
@@ -430,7 +420,6 @@
         setTimeout(function() {
           lightbox.classList.remove('open');
           lightboxImg.src = '';
-          document.getElementById('exp-slider').focus();
         }, 350);
       }
     });

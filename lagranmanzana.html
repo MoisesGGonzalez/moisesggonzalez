@@ -24,7 +24,7 @@
       bottom: 0;
       top: auto;
       margin-left: 12px;
-      background: rgba(15, 15, 15, 0.97);
+      background: rgba(15,15,15,0.97);
       border: 1px solid rgba(255,255,255,0.1);
       border-radius: 8px;
       padding: 8px 0;
@@ -34,9 +34,7 @@
       box-shadow: 0 8px 24px rgba(0,0,0,0.4);
     }
 
-    .exp-submenu.open {
-      display: block;
-    }
+    .exp-submenu.open { display: block; }
 
     .exp-submenu a {
       display: block;
@@ -58,6 +56,18 @@
     .exp-link.active {
       opacity: 1;
       color: #fff;
+    }
+
+    /* En móvil el submenú baja debajo del link */
+    @media (max-width: 768px) {
+      .exp-submenu {
+        position: relative;
+        left: auto;
+        bottom: auto;
+        margin-left: 0;
+        margin-top: 8px;
+        width: 100%;
+      }
     }
 
     .mantenimiento-overlay {
@@ -105,7 +115,7 @@
     <span></span>
   </div>
 
-  <aside class="exp-panel">
+  <aside class="exp-panel" id="exp-panel">
     <div class="exp-panel-inner">
 
       <div class="exp-meta">
@@ -117,7 +127,7 @@
 
       <div class="exp-info">
         <p class="exp-info-label">Puesto</p>
-        <p class="exp-info-valor">Creador de contenido</p>
+        <p class="exp-info-valor">Diseñador gráfico</p>
       </div>
 
       <div class="exp-info">
@@ -147,9 +157,11 @@
           </div>
         </div>
       </div>
-
     </div>
+            <div class="mobile-swipe-hint" id="mobile-swipe-hint">Ver trabajo</div>
+
   </aside>
+
 
   <div class="exp-slider" id="exp-slider">
     <div class="exp-mosaico">
@@ -186,25 +198,25 @@
 
   <div class="scroll-hint">Desliza</div>
 
+  <!-- Lightbox -->
+  <div class="lightbox-overlay" id="lightbox">
+    <img src="" alt="" id="lightbox-img">
+  </div>
+
   <script src="nav-experiencia.js"></script>
   <script src="experiencia.js"></script>
   <script src="transicion.js"></script>
 
   <script>
+    // ── Submenús de links ──
     document.querySelectorAll('.exp-link[data-submenu]').forEach(function(link) {
       link.addEventListener('click', function(e) {
         e.preventDefault();
         var targetId = this.getAttribute('data-submenu');
         var targetMenu = document.getElementById(targetId);
         var isOpen = targetMenu.classList.contains('open');
-
-        document.querySelectorAll('.exp-submenu').forEach(function(m) {
-          m.classList.remove('open');
-        });
-        document.querySelectorAll('.exp-link[data-submenu]').forEach(function(l) {
-          l.classList.remove('active');
-        });
-
+        document.querySelectorAll('.exp-submenu').forEach(function(m) { m.classList.remove('open'); });
+        document.querySelectorAll('.exp-link[data-submenu]').forEach(function(l) { l.classList.remove('active'); });
         if (!isOpen) {
           targetMenu.classList.add('open');
           this.classList.add('active');
@@ -214,21 +226,14 @@
 
     document.addEventListener('click', function(e) {
       if (!e.target.closest('.exp-panel')) {
-        document.querySelectorAll('.exp-submenu').forEach(function(m) {
-          m.classList.remove('open');
-        });
-        document.querySelectorAll('.exp-link[data-submenu]').forEach(function(l) {
-          l.classList.remove('active');
-        });
+        document.querySelectorAll('.exp-submenu').forEach(function(m) { m.classList.remove('open'); });
+        document.querySelectorAll('.exp-link[data-submenu]').forEach(function(l) { l.classList.remove('active'); });
       }
     });
   </script>
 
-  <div class="lightbox-overlay" id="lightbox">
-    <img src="" alt="" id="lightbox-img">
-  </div>
-
   <script>
+    // ── Lightbox desactivado hasta que haya contenido ──
     var lightbox = document.getElementById('lightbox');
     var lightboxImg = document.getElementById('lightbox-img');
 
@@ -242,7 +247,6 @@
         setTimeout(function() {
           lightbox.classList.remove('open');
           lightboxImg.src = '';
-          document.getElementById('exp-slider').focus();
         }, 350);
       }
     });
